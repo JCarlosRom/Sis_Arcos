@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
+    <!--
+        En este archivo se configuran las rutas del controlador y las vistas.
+    -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="login.htm">loginController</prop>
+                <prop key="login_ajax.htm">loginController</prop>
+                <prop key="login_1.htm">loginController</prop>
+                                
+                
+                <prop key="index.htm">Controller_index</prop>
+                <prop key="listar_autos_interfazPrincipal.htm">Controller_index</prop>
+                <prop key="verificar_cambios.htm">Controller_index</prop>
+                <prop key="cambio_estado_tablero.htm">Controller_index</prop>
+                <prop key="porcentaje_alertas.htm">Controller_index</prop>
+                <prop key="bdd_remotas.htm">Controller_index</prop>
+                <prop key="cambio_bd_remotas.htm">Controller_index</prop>
+                
+                
+                <prop key="lecturas_vehiculo.htm">lectura_vehiculoController</prop>
+                <prop key="lecturas_vehiculo_detalle.htm">lectura_vehiculo_detalleController</prop>
+                <prop key="consultar_vehiculo.htm">lectura_vehiculoController</prop>
+                <prop key="lecturas_arco.htm">lectura_arcoController</prop>
+                <prop key="lecturas_arco_detalle.htm">lectura_arco_detalleController</prop>
+                <prop key="consultar_alertas_arcos.htm">lectura_arcoController</prop>
+                <prop key="logout.htm">loginController</prop>
+             
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <!--
+    The index controller.
+    --> 
+    <bean name="Controller_index" class="Controllers.index" />
+    <bean name="loginController" class="Controllers.Login"/>
+    <bean name="lectura_vehiculoController" class="Controllers.lectura_vehiculo"/>
+    <bean name="lectura_vehiculo_detalleController" class="Controllers.lectura_vehiculo_detalle"/>
+    <bean name="lectura_arcoController" class="Controllers.lectura_arco"/>
+    <bean name="lectura_arco_detalleController" class="Controllers.lectura_arco_detalle"/>
+
+    
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index11" />
+
+</beans>
