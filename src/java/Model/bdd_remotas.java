@@ -8,11 +8,13 @@ public class bdd_remotas {
     private String nombre;
     private Long accesodatos;
     private String id;
+   
 
     public bdd_remotas(String nombre, Long accesodatos, String id) {
         this.nombre = nombre;
         this.accesodatos = accesodatos;
         this.id = id;
+
     }
 
     public String getId() {
@@ -30,6 +32,8 @@ public class bdd_remotas {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+  
 
     public Long getAccesodatos() {
         return accesodatos;

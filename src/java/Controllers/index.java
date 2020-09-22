@@ -28,6 +28,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -76,19 +77,27 @@ public class index extends HttpServlet {
 
             ResultSet rq = Conexion.query("select * from sp_acceso_datos_db();");
             ArrayList<bdd_remotas> bddRemotas = new ArrayList<>();
+            int counterErrorDB = 0;
             try {
+            
                 while (rq.next()) {
+                    if(rq.getLong("accesodatos")==0){
+                        counterErrorDB+=1;
+                    }
                     bddRemotas.add(new bdd_remotas(
                             rq.getString("nombre"),
                             rq.getLong("accesodatos"),
                             "Status" + rq.getString("nombre").replace(" ", "")
                     ));
                 }
+                
                 rq.close();
                 Conexion.executeQueryClose();
             }  catch (Exception ex) {
                 System.out.println(ex.getMessage());
             } 
+            
+            System.out.println(counterErrorDB);
 
             ResultSet rz = Conexion.query("select * from sp_arcos_operando();");
             ArrayList<Arcos_Operando> arcosOp = new ArrayList<>();
@@ -119,9 +128,11 @@ public class index extends HttpServlet {
             }  catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
-
+        
+            System.out.println("index");
             mav.addObject("arcos", arcos);
             mav.addObject("bddRemotas", bddRemotas);
+            mav.addObject("counterErrorDB", counterErrorDB);
             mav.addObject("arcosOp", arcosOp);
             mav.addObject("alertas_prom", alertas_prom);
 
@@ -131,9 +142,42 @@ public class index extends HttpServlet {
     }
 
     // Metodo para redireccionar a Lecturas_vehiculo.htm
-    @GetMapping("/Sis_Arcos/lecturas_vehiculo.htm")
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("lecturas_vehiculo.htm");
+    @GetMapping("lecturas_vehiculo.htm")
+    protected org.springframework.web.servlet.ModelAndView  lecturas_vehiculo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Conexion Conexion = new Conexion();
+        org.springframework.web.servlet.ModelAndView mav = new org.springframework.web.servlet.ModelAndView();
+        ResultSet rq = Conexion.query("select * from sp_acceso_datos_db();");
+        System.out.println("Hello");
+        ArrayList<bdd_remotas> bddRemotas = new ArrayList<>();
+        int counterErrorDB = 0;
+        try {
+
+            while (rq.next()) {
+                if(rq.getLong("accesodatos")==0){
+                    counterErrorDB+=1;
+                }
+                bddRemotas.add(new bdd_remotas(
+                        rq.getString("nombre"),
+                        rq.getLong("accesodatos"),
+                        "Status" + rq.getString("nombre").replace(" ", "")
+                ));
+            }
+
+            rq.close();
+            Conexion.executeQueryClose();
+        }  catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } 
+        System.out.println("Hello");
+        mav.addObject("counterErrorDB", counterErrorDB);
+        mav.addObject("bddRemotas", bddRemotas);
+
+        
+        //mav.setViewName("lecturas_vehiculo");
+        
+        return mav;
+        
+
     }
     
     // Metodo para cerrar sesion

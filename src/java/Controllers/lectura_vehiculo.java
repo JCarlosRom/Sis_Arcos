@@ -250,9 +250,12 @@ Conexion.executeQueryClose();
 
             ResultSet rq = Conexion.query("select * from sp_acceso_datos_db();");
             ArrayList<bdd_remotas> bddRemotas = new ArrayList<>();
-
+            int counterErrorDB=0;
             try {
                 while (rq.next()) {
+                    if(rq.getLong("accesodatos")==0){
+                    counterErrorDB+=1;
+                }
                     bddRemotas.add(new bdd_remotas(
                             rq.getString("nombre"),
                             rq.getLong("accesodatos"),
@@ -308,6 +311,7 @@ Conexion.executeQueryClose();
             }
 
             mav.addObject("bddRemotas", bddRemotas);
+            mav.addObject("counterErrorDB", counterErrorDB);
             mav.addObject("arcos_option", arcos_option);
             mav.addObject("arcos", arcos);
             mav.addObject("alertas_prom", alertas_prom);

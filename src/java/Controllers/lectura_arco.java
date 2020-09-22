@@ -182,9 +182,13 @@ public class lectura_arco {
 
             ResultSet rs = Conexion.query("select * from sp_acceso_datos_db();");
             ArrayList<bdd_remotas> bddRemotas = new ArrayList<>();
-
+            int counterErrorDB =0; 
             try {
                 while (rs.next()) {
+                    
+                    if(rs.getLong("accesodatos")==0){
+                        counterErrorDB+=1;
+                    }
                     bddRemotas.add(new bdd_remotas(
                             rs.getString("nombre"),
                             rs.getLong("accesodatos"),
@@ -247,6 +251,7 @@ public class lectura_arco {
 
             mav.addObject("arcos", arcos);
             mav.addObject("bddRemotas", bddRemotas);
+            mav.addObject("counterErrorDB", counterErrorDB);
             mav.addObject("arcos_option", arcos_option);
             mav.addObject("colors", colors);
             mav.addObject("alertas_prom", alertas_prom);
