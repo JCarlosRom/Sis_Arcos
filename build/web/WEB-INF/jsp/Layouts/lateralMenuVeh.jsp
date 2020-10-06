@@ -10,7 +10,7 @@
        data-target="#main-slide-menu">
         <i class="icon"></i>
     </a>
-    <h6 class="p-4">Consulta de Lecturas por Vehículos</h6>
+    <h6 class="p-4 Vehiculotitle">Consulta de Lecturas por Vehículos</h6>
     <div class="card main-slide-menu-card">
         <div class="card-header">
             <div class="container-fluid">
@@ -51,33 +51,34 @@
                         <button title="" class="action-filter m-0"><i class="fas fa-filter"></i></button>
                     </div>
                 </div>
-                <div class="row table-filters pt-3 pb-3">
-                    <div class="col-md-3">
-                        <label class="noselect" for="filter-danger">
-                            <i class="fas fa-times-circle text-danger"></i>
-                            <input id="filter-danger" type="checkbox">
-                            Critico
+                
+                <div class="row no-gutters able-filters pt-3 pb-3">
+
+                    <div class="col-md-1">
+                        <label class="noselect" for="Aceptar">
+                            <i id="danger" class="fas fa-times-circle text-danger fa-2x" ></i>
+                              <i id="CheckDanger" class="fa fa-check-circle" style="display:none; color:#3843d1; position:absolute; margin-left: 10px;margin-top: -7px;"></i>
                         </label>
                     </div>
-                    <div class="col-md-3">
-                        <label class="noselect" for="filter-info">
-                            <i class="fas fa-info-circle text-info"></i>
-                            <input id="filter-info" type="checkbox">
-                            Informativo
+                    <div class="col-md-1">
+                        <label class="noselect" for="Aceptar">
+                            <i id="Info" class="fas fa-info-circle text-info fa-2x"></i>
+                            <i id="CheckInfo" class="fa fa-check-circle" style="display:none; color:#3843d1; position:absolute; margin-left: 10px;margin-top: -7px;"></i>
                         </label>
                     </div>
-                    <div class="col-md-3">
-                        <label class="noselect" for="filter-warning">
-                            <i class="fas fa-exclamation-triangle text-warning"></i>
-                            <input id="filter-warning" type="checkbox">
-                            Advertencia
-                        </label>
+                    <div class="col-md-1">
+                        <label class="noselect" for="Aceptar">
+                            <i id="Alert" class="fas fa-exclamation-triangle text-warning fa-2x"></i>
+                            <i id="CheckAlert" class="fa fa-check-circle" style="display:none; color:#3843d1; position:absolute; margin-left: 16px;margin-top: -7px;"></i>
+                        </label>   
                     </div>
-                    <form id="Aceptar" class="col-md-3" action="#">
+                     
+                      <form id="Aceptar" class="col-md-3" action="#">
                         <button type="submit"  class="btn btn-primary">BUSCAR</button>
                     </form>
 
                 </div>
+           
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-arcos-head d-flex flex-wrap justify-content-between text-light">

@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
         <file>
             <url>src/java/Controllers/lectura_arco.java</url>
             <bookmark id="1">
                 <name/>
-                <line>81</line>
+                <line>84</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/Controllers/index.java</url>
+            <bookmark id="2">
+                <name/>
+                <line>111</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Users/ADMIN/Desktop/Kiotech/Software/Sis_Arcos-master/web/css/index.css</file>
-            <file>file:/D:/Users/ADMIN/Desktop/Kiotech/Software/Sis_Arcos-master/web/javascript/main.js</file>
-            <file>file:/D:/Users/ADMIN/Desktop/Kiotech/Software/Sis_Arcos-master/web/WEB-INF/jsp/index.jsp</file>
+            <file>file:/D:/Users/ADMIN/Desktop/Kiotech/Software/Sis_Arcos-master/web/WEB-INF/jsp/detalleAlerta.jsp</file>
+            <file>file:/D:/Users/ADMIN/Desktop/Kiotech/Software/Sis_Arcos-master/web/javascript/Scripts/detalleAlerta.js</file>
+            <file>file:/D:/Users/ADMIN/Desktop/Kiotech/Software/Sis_Arcos-master/src/java/Model/detalleAlertaObject.java</file>
+            <file>file:/D:/Users/ADMIN/Desktop/Kiotech/Software/Sis_Arcos-master/web/WEB-INF/jsp/Layouts/lateralDetalleAlerta.jsp</file>
+            <file>file:/D:/Users/ADMIN/Desktop/Kiotech/Software/Sis_Arcos-master/src/java/Controllers/detalleAlerta.java</file>
         </group>
     </open-files>
 </project-private>

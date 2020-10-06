@@ -24,7 +24,7 @@ public class Conexion {
     //
     public static String servidorBD = "yimicol2020.ddns.net";
     public static String puertoBD = "5432";
-    public static String nombreBD = "BD_Central_Arcos";
+    public static String nombreBD = "BD_Central_Arcos_V2";
     public static String usuarioBD = "postgres";
     //public static String passwordBD = "NU3V0.M4N4G3R";
     public static String passwordBD = "kioadmin";

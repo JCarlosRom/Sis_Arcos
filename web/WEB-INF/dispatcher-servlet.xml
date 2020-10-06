@@ -29,6 +29,11 @@
                 <prop key="porcentaje_alertas.htm">Controller_index</prop>
                 <prop key="bdd_remotas.htm">Controller_index</prop>
                 <prop key="cambio_bd_remotas.htm">Controller_index</prop>
+                <prop key="index_detalleAlerta.htm">Controller_detalleAlerta</prop>
+                <prop key="uploadDocs.htm">Controller_detalleAlerta</prop>
+                <prop key="getDocsAlerta.htm">Controller_detalleAlerta</prop>
+                <prop key="eliminarDoc.htm">Controller_detalleAlerta</prop>
+                
                 
                 
                 <prop key="lecturas_vehiculo.htm">lectura_vehiculoController</prop>
@@ -38,6 +43,9 @@
                 <prop key="lecturas_arco_detalle.htm">lectura_arco_detalleController</prop>
                 <prop key="consultar_alertas_arcos.htm">lectura_arcoController</prop>
                 <prop key="logout.htm">loginController</prop>
+                
+                <prop key="getAlertas.htm">Controller_index</prop>
+                
              
             </props>
         </property>
@@ -57,10 +65,18 @@
     <bean name="lectura_vehiculo_detalleController" class="Controllers.lectura_vehiculo_detalle"/>
     <bean name="lectura_arcoController" class="Controllers.lectura_arco"/>
     <bean name="lectura_arco_detalleController" class="Controllers.lectura_arco_detalle"/>
+    <bean name="Controller_detalleAlerta" class="Controllers.detalleAlerta"/>
+    
+
+    
 
     
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index11" />
+    
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    </bean>
 
 </beans>

@@ -6,9 +6,13 @@ package Controllers;
 import Config.Conexion;
 import Model.Alertas;
 import Model.Arco;
+import Model.Lectura;
 import Model.Arcos_Operando;
 import Model.bdd_remotas;
 import Model.lectura_vehiculo;
+import Model.alertasPendientes;
+import Model.Queries;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
@@ -33,14 +37,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class index extends HttpServlet {
-
     
     PreparedStatement ps;
     ResultSet rs;
     lectura_vehiculo lv = new lectura_vehiculo();
-    
 
-    
+
 
     // Este metodo responte a la liga lecturas_arco.htm y carga el modelo vista controlador.
     @RequestMapping("index.htm")
@@ -63,7 +65,6 @@ public class index extends HttpServlet {
                     arcos.add(new Arco(
                             r.getInt("id_lector"),
                             r.getString("nombre"),
-                            r.getString("descripcion"),
                             latitud,
                             longitud,
                             r.getInt("marcador")
@@ -74,30 +75,6 @@ public class index extends HttpServlet {
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
-
-            ResultSet rq = Conexion.query("select * from sp_acceso_datos_db();");
-            ArrayList<bdd_remotas> bddRemotas = new ArrayList<>();
-            int counterErrorDB = 0;
-            try {
-            
-                while (rq.next()) {
-                    if(rq.getLong("accesodatos")==0){
-                        counterErrorDB+=1;
-                    }
-                    bddRemotas.add(new bdd_remotas(
-                            rq.getString("nombre"),
-                            rq.getLong("accesodatos"),
-                            "Status" + rq.getString("nombre").replace(" ", "")
-                    ));
-                }
-                
-                rq.close();
-                Conexion.executeQueryClose();
-            }  catch (Exception ex) {
-                System.out.println(ex.getMessage());
-            } 
-            
-            System.out.println(counterErrorDB);
 
             ResultSet rz = Conexion.query("select * from sp_arcos_operando();");
             ArrayList<Arcos_Operando> arcosOp = new ArrayList<>();
@@ -128,11 +105,19 @@ public class index extends HttpServlet {
             }  catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
-        
-            System.out.println("index");
+          
+
             mav.addObject("arcos", arcos);
-            mav.addObject("bddRemotas", bddRemotas);
-            mav.addObject("counterErrorDB", counterErrorDB);
+            
+            mav.addObject("bddRemotas",  Queries.dbbDashboard().getBdd());
+            mav.addObject("counterErrorDB", Queries.dbbDashboard().getCounterBDD());
+            
+            mav.addObject("lecturas", Queries.arcosDashboard().getArcos());
+            mav.addObject("counterLecturas", Queries.arcosDashboard().getCounterArcos());
+            
+            mav.addObject("alertasPendientes", Queries.alertasDashboard().getAlerta());
+            mav.addObject("counterAlertasPendientes", Queries.alertasDashboard().getCounterAlarmas());
+            
             mav.addObject("arcosOp", arcosOp);
             mav.addObject("alertas_prom", alertas_prom);
 
@@ -364,6 +349,47 @@ Conexion Conexion = new Conexion();
         out.print(promedio);
 
     }
+    
+    
+        // Metodo para traer el estado de conexion de las base de datos remotas
+    @RequestMapping(value = "getAlertas.htm", method = RequestMethod.POST)
+    public void getAlertas(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+
+        JSONObject alertas = new JSONObject();
+        Conexion Conexion = new Conexion();
+        try {
+            
+              ResultSet r2 = Conexion.query("select a.id_alerta, cat.nombre as nombre, l.ubicacion, "
+                + "concat(extract(day from a.fecha_hora),'/',extract(month from a.fecha_hora),'/',extract(year from a.fecha_hora)) as \"alertaFecha\", \n" +
+                "concat(extract(hour from a.fecha_hora),':',extract(minute from a.fecha_hora)) as \"Hora\",\n" +
+                "urp.niv, urp.placa from  alerta a inner join cat_alerta cat on a.fk_id_cat_alerta = cat.id_cat_alerta \n" +
+                "inner join lector l on a.fk_id_lector = l.id_lector inner join unidad_registro_repuve urp on a.fk_id_objeto = urp.niv\n" +
+                "where a.pendiente = 0;");
+         
+            while (r2.next()) {
+                JSONObject alertas2 = new JSONObject();
+                
+                alertas2.put("idAlerta", r2.getInt("id_alerta"));
+                alertas2.put("alertaNombre", r2.getString("nombre"));
+                alertas2.put("alertaLugar", r2.getString("ubicacion"));
+                alertas2.put("alertaFecha", r2.getString("alertaFecha"));
+                alertas2.put("alertaHora", r2.getString("Hora"));
+                alertas2.put("Placa", r2.getString("niv"));
+                alertas2.put("Niv", r2.getString("placa"));
+                
+                alertas.put(r2.getInt("id_alerta"),alertas2);
+               
+            }
+            r2.close();
+            Conexion.executeQueryClose();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        out.print(alertas);
+
+    }
 
     // Metodo para traer el estado de conexion de las base de datos remotas
     @RequestMapping(value = "bdd_remotas.htm", method = RequestMethod.POST)
@@ -373,6 +399,7 @@ Conexion Conexion = new Conexion();
         JSONObject bdd = new JSONObject();
 Conexion Conexion = new Conexion();
         try {
+            
             ResultSet r = Conexion.query("select * from sp_acceso_datos_db()");
             while (r.next()) {
                 bdd.put(r.getString("nombre"), r.getString("accesodatos"));
@@ -415,7 +442,7 @@ Conexion Conexion = new Conexion();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        lecturas_vehiculo(request, response);
     }
 
     /**
@@ -428,7 +455,7 @@ Conexion Conexion = new Conexion();
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        lecturas_vehiculo(request, response);
     }
 
     /**

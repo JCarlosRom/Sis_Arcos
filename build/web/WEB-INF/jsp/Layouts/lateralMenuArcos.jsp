@@ -11,7 +11,7 @@
        data-target="#main-slide-menu">
         <i class="icon"></i>
     </a>
-    <h6 class="p-4">Consulta de Lecturas por Arcos</h6>
+    <h6 class="p-4 Arcotitle">Consulta de Lecturas por Arcos</h6>
     <div class="card main-slide-menu-card">
         <div class="card-header">
             <div class="container">
@@ -46,31 +46,61 @@
                 </div>
                 <div class="row table-filters pt-3 pb-1">
                     <div class="col-md-6">
-                        <div class="d-flex">
-                            <div class="d-flex justify-content-start align-items-end card-actions">
-                                <button title="" class="action-filter m-0"><i class="fas fa-filter"></i></button>
-                            </div>
-                            <div class="d-flex table-filters pl-1">
-                                <label class="noselect" for="Buscar">
-                                    <i class="fas fa-times-circle text-danger"></i>
-                                    <input id="filter-danger" type="checkbox">
-                                    Critico
-                                </label>
-                                <label class="noselect" for="Buscar">
-                                    <i class="fas fa-info-circle text-info"></i>
-                                    <input id="filter-info" type="checkbox">
-                                    Informativo
-                                </label>
-                                <label class="noselect" for="Buscar">
-                                    <i class="fas fa-exclamation-triangle text-warning"></i>
-                                    <input id="filter-warning" type="checkbox">
-                                    Advertencia
+                        <div class="row no-gutters able-filters pt-3 pb-3">
+
+                            <div class="col-md-2">
+                                <label class="noselect" for="Aceptar">
+                                    <i id="danger" class="fas fa-times-circle text-danger fa-2x" ></i>
+                                      <i id="CheckDanger" class="fa fa-check-circle" style="display:none; color:#3843d1; position:absolute; margin-left: 10px;margin-top: 13px;"></i>
                                 </label>
                             </div>
+                            <div class="col-md-2">
+                                <label class="noselect" for="Aceptar">
+                                    <i id="Info" class="fas fa-info-circle text-info fa-2x"></i>
+                                    <i id="CheckInfo" class="fa fa-check-circle" style="display:none; color:#3843d1; position:absolute; margin-left: 10px;margin-top: 13px;"></i>
+                                </label>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="noselect" for="Aceptar">
+                                    <i id="Alert" class="fas fa-exclamation-triangle text-warning fa-2x"></i>
+                                    <i id="CheckAlert" class="fa fa-check-circle" style="display:none; color:#3843d1; position:absolute; margin-left: 16px;margin-top: 13px;"></i>
+                                </label>   
+                            </div>
+
                         </div>
                     </div>
-                    <div class="col-md-6 d-flex">
-                        <div class="flex-grow-1 d-flex pt-2">
+                    <div class="col-md-6 d-flex pb-3 pt-3">
+                        <div class="col-md-2">
+                            <label class="noselect" for="Aceptar">
+                                <i id="Moto" class="fas fa-motorcycle text-warning fa-2x"></i>
+                                <i id="CheckMoto" class="fa fa-check-circle" style="display:none; color:#3843d1; position:absolute; margin-left: 16px;margin-top: 13px;"></i>
+                            </label> 
+                        </div>
+                        <div class="col-md-2">
+                          <label class="noselect" for="Aceptar">
+                              <i id="Car" class="fas fa-car text-warning fa-2x"></i>
+                              <i id="CheckCar" class="fa fa-check-circle" style="display:none; color:#3843d1; position:absolute; margin-left: 16px;margin-top: 13px;"></i>
+                          </label> 
+                        </div>
+                        <div class="col-md-2">
+                          <label class="noselect" for="Aceptar">
+                              <i id="Taxi" class="fas fa-taxi text-warning fa-2x"></i>
+                              <i id="CheckTaxi" class="fa fa-check-circle" style="display:none; color:#3843d1; position:absolute; margin-left: 16px;margin-top: 13px;"></i>
+                          </label> 
+                        </div>
+                        <div class="col-md-2">
+                          <label class="noselect" for="Aceptar">
+                              <i id="Bus" class="fas fa-bus-alt text-warning fa-2x"></i>
+                              <i id="CheckBus" class="fa fa-check-circle" style="display:none; color:#3843d1; position:absolute; margin-left: 16px;margin-top: 13px;"></i>
+                          </label> 
+                        </div>
+                        <div class="col-md-2">
+                          <label class="noselect" for="Aceptar">
+                              <i id="Truck" class="fas fa-truck-pickup text-warning fa-2x"></i>
+                              <i id="CheckTruck" class="fa fa-check-circle" style="display:none; color:#3843d1; position:absolute; margin-left: 16px;margin-top: 13px;"></i>
+                          </label> 
+                        </div>
+                        <!--<div class="flex-grow-1 d-flex pt-2">
                             <input id="Motocicleta" type="checkbox" class="fas fa-motorcycle check-icon">
                             <input id="Carro" type="checkbox" class="fas fa-car check-icon">
                             <input id="Taxi" type="checkbox" class="fas fa-taxi check-icon">

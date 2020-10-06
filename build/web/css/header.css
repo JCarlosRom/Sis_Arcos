@@ -1,0 +1,85 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25-sep-2020, 12:10:28
+    Author     : ADMIN
+*/
+
+
+/* Modulo Lectura de arcos */
+
+.iconDrowpdownLect{
+    font-size:25px; 
+    color: rgb(26,117,207);
+}
+.iconDrowpdownLectStatus{
+    color:white; 
+    background-color: #22c54d; 
+    border-radius: 3px; 
+    font-size:9px;
+    margin-top: -20px;
+    margin-left: -7px;
+}
+
+.lectNo{
+   color:white; font-weight:bold;margin-top: 27px; position:absolute; font-size:12px;margin-left: 2px;
+}
+
+.lecturaError{
+    color:white; background-color: red; 
+    border-radius: 3px; font-size:9px;
+    margin-top: -20px;margin-left: -7px;
+}
+
+.lecturaWarning{
+    color:white; 
+    background-color: yellow; 
+    border-radius: 3px; 
+    font-size:9px;
+    margin-top: -20px;
+    margin-left: -7px;
+}
+
+.lecturaSuccess{
+    color:white; 
+    background-color: #22c54d; 
+    border-radius: 3px; 
+    font-size:9px;
+    margin-top: -20px;
+    margin-left: -7px;
+}
+
+/* opciones del menú */
+.nav-link{
+    color:white;
+}
+.nav-link:hover{
+    color:rgb(168,207,69);
+}
+/* Nav activo */
+.active{
+    color:rgb(168,207,69);
+}
+
+.tab-pane{
+    color:black; 
+}
+
+.notificationAlert{
+    background-color: #0a1e27; border-radius:5px;
+      border: 2px solid rgba(0,86,126,0.6);
+      width:330px;
+  
+}
+
+.notificationAlert p{
+    color:white;
+    font-size: 13px;
+    margin-bottom:8px;
+    
+}
+
+

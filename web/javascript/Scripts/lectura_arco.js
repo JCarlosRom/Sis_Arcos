@@ -483,6 +483,69 @@ $(document).ready(function () {
     //setInterval(varificar_cambios, 5000);
 });
 
+
+
+$("#Moto").on("click", function(){
+    console.log("Moto");
+    if($("#CheckMoto").css("display")=="none"){
+        $("#CheckMoto").css("display","block");
+        $("#Moto").css("textShadow","white 1px 1px 1px");
+    }else{
+        $("#CheckMoto").css("display","none");
+        $("#Moto").css("textShadow","white 0px 0px 0px");
+    }
+
+})
+
+$("#Car").on("click", function(){
+
+    if($("#CheckCar").css("display")=="none"){
+        $("#CheckCar").css("display","block");
+        $("#Car").css("textShadow","white 1px 1px 1px");
+    }else{
+        $("#CheckCar").css("display","none");
+        $("#Car").css("textShadow","white 0px 0px 0px");
+    }
+
+})
+
+
+$("#Taxi").on("click", function(){
+    
+    if($("#CheckTaxi").css("display")=="none"){
+        $("#CheckTaxi").css("display","block");
+        $("#Taxi").css("textShadow","white 1px 1px 1px");
+    }else{
+        $("#CheckTaxi").css("display","none");
+        $("#Taxi").css("textShadow","white 0px 0px 0px");
+    }
+
+})
+
+$("#Bus").on("click", function(){
+    
+    if($("#CheckBus").css("display")=="none"){
+        $("#CheckBus").css("display","block");
+        $("#Bus").css("textShadow","white 1px 1px 1px");
+    }else{
+        $("#CheckBus").css("display","none");
+        $("#Bus").css("textShadow","white 0px 0px 0px");
+    }
+
+})
+
+$("#Truck").on("click", function(){
+    
+    if($("#CheckTruck").css("display")=="none"){
+        $("#CheckTruck").css("display","block");
+        $("#Truck").css("textShadow","white 1px 1px 1px");
+    }else{
+        $("#CheckTruck").css("display","none");
+        $("#Truck").css("textShadow","white 0px 0px 0px");
+    }
+
+})
+
 //Metodo para verificar si existen cambios en la tabla bandera
 function varificar_cambios() {
     $.ajax({

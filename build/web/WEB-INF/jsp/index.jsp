@@ -25,10 +25,10 @@
         <main>
             <!-- Menú lateral -->
           <jsp:include page="/WEB-INF/jsp/Layouts/lateralMenuIndex.jsp"></jsp:include>
-            <!-- main slide nav -->
-            <jsp:include page="/WEB-INF/jsp/Layouts/Menu.jsp"></jsp:include>
+          
             <!-- map-container -->
             <div class="map-container" id="map" style="z-index: 1">
+                
             </div>
         </main>
         <!-- Footer -->
@@ -61,6 +61,7 @@
 
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdTfw1waJScSYaMdXKGqAW6rnHcwmjZwc&callback=initMap"></script>
         <script src='javascript/Scripts/index.js'></script>
+        <script src='javascript/Scripts/alertaConsulta.js'></script>
         
         <script type="text/javascript">
             var advertenciaIcon = 'images/advertencia.png';
@@ -154,10 +155,7 @@
                         }
                     ]
                 });
-            <c:forEach var="arco" items="${arcos}">
-                addMarker(${arco.getId()}, "${arco.getNombre()}", "${arco.getDescripcion()}", ${arco.getLatitud()}, ${arco.getLongitud()}, ${arco.getTipo_alerta()});
-            </c:forEach>
-
+     
         }
 
         </script>

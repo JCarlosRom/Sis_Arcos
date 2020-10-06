@@ -10,6 +10,7 @@
         <title>Lecturas Arcos</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.min.css" />
+        <link rel="stylesheet" href="css/lecturaArco.css" />
     </head>
 
     <body class="theme-dark">
@@ -18,9 +19,6 @@
         <main>
             <!-- Menú lateral de Consulta de arcos -->
             <jsp:include page="/WEB-INF/jsp/Layouts/lateralMenuArcos.jsp"></jsp:include>
-
-            <!-- main slide nav -->
-           <jsp:include page="/WEB-INF/jsp/Layouts/Menu.jsp"></jsp:include>
 
             <!-- map-container -->
             <div class="map-container" id="map" style="z-index: 1">
@@ -52,7 +50,7 @@
         <script src="<c:url value="/javascript/vendors/bootstrap.min.js" />"></script>
         <script src="<c:url value="/javascript/slide_menu.js" />"></script>
         <script src="<c:url value="/javascript/main.js"/>"></script>
-        <script src="<c:url value="/javascript/lectura_arco.js"/>"></script>
+        <script src="<c:url value="/javascript/Scripts/lectura_arco.js"/>"></script>
 
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdTfw1waJScSYaMdXKGqAW6rnHcwmjZwc&callback=initMap">
         </script>

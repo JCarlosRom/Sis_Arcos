@@ -6,7 +6,10 @@ package Controllers;
 import Config.Conexion;
 import Model.Alertas;
 import Model.Arco;
+import Model.Lectura;
+import Model.alertasPendientes;
 import Model.bdd_remotas;
+import Model.Queries;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
@@ -232,7 +235,6 @@ Conexion.executeQueryClose();
                     arcos.add(new Arco(
                             r.getInt("id_lector"),
                             r.getString("nombre"),
-                            r.getString("descripcion"),
                             latitud,
                             longitud,
                             r.getInt("marcador")
@@ -248,28 +250,6 @@ Conexion.executeQueryClose();
 
             System.out.println("ARCOS_ENCONTRADOS: " + arcos.size());
 
-            ResultSet rq = Conexion.query("select * from sp_acceso_datos_db();");
-            ArrayList<bdd_remotas> bddRemotas = new ArrayList<>();
-            int counterErrorDB=0;
-            try {
-                while (rq.next()) {
-                    if(rq.getLong("accesodatos")==0){
-                    counterErrorDB+=1;
-                }
-                    bddRemotas.add(new bdd_remotas(
-                            rq.getString("nombre"),
-                            rq.getLong("accesodatos"),
-                            "Status" + rq.getString("nombre").replace(" ", "")
-                    ));
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(index.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            finally{
-                rq.close();
-                Conexion.executeQueryClose();
-            }
-
             ResultSet rz = Conexion.query("select * from sp_consultar_arcos();");
             ArrayList<Arco> arcos_option = new ArrayList<>();
 
@@ -281,7 +261,7 @@ Conexion.executeQueryClose();
                     ));
                 }
                 rz.close();
-Conexion.executeQueryClose();
+                Conexion.executeQueryClose();
             } catch (SQLException ex) {
                 Logger.getLogger(index.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -310,8 +290,15 @@ Conexion.executeQueryClose();
                 ry.close();
             }
 
-            mav.addObject("bddRemotas", bddRemotas);
-            mav.addObject("counterErrorDB", counterErrorDB);
+            mav.addObject("bddRemotas",  Queries.dbbDashboard().getBdd());
+            mav.addObject("counterErrorDB", Queries.dbbDashboard().getCounterBDD());
+            
+            mav.addObject("lecturas", Queries.arcosDashboard().getArcos());
+            mav.addObject("counterLecturas", Queries.arcosDashboard().getCounterArcos());
+  
+            mav.addObject("alertasPendientes", Queries.alertasDashboard().getAlerta());
+            mav.addObject("counterAlertasPendientes", Queries.alertasDashboard().getCounterAlarmas());
+            
             mav.addObject("arcos_option", arcos_option);
             mav.addObject("arcos", arcos);
             mav.addObject("alertas_prom", alertas_prom);

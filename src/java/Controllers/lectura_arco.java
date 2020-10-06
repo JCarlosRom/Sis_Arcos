@@ -6,7 +6,10 @@ package Controllers;
 import Config.Conexion;
 import Model.Alertas;
 import Model.Arco;
+import Model.Lectura;
+import Model.alertasPendientes;
 import Model.bdd_remotas;
+import Model.Queries;
 import Model.colores;
 import Model.lectura_arco_detalle;
 import java.io.IOException;
@@ -166,7 +169,6 @@ public class lectura_arco {
                     arcos.add(new Arco(
                             r.getInt("id_lector"),
                             r.getString("nombre"),
-                            r.getString("descripcion"),
                             latitud,
                             longitud,
                             r.getInt("marcador")
@@ -180,27 +182,7 @@ public class lectura_arco {
                 System.out.println(ex.getMessage());
             } 
 
-            ResultSet rs = Conexion.query("select * from sp_acceso_datos_db();");
-            ArrayList<bdd_remotas> bddRemotas = new ArrayList<>();
-            int counterErrorDB =0; 
-            try {
-                while (rs.next()) {
-                    
-                    if(rs.getLong("accesodatos")==0){
-                        counterErrorDB+=1;
-                    }
-                    bddRemotas.add(new bdd_remotas(
-                            rs.getString("nombre"),
-                            rs.getLong("accesodatos"),
-                            "Status" + rs.getString("nombre").replace(" ", "")
-                    ));
-                }
-                rs.close();
-                Conexion.executeQueryClose();
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-            } 
-
+   
             ResultSet rz = Conexion.query("select * from sp_consultar_arcos();");
             ArrayList<Arco> arcos_option = new ArrayList<>();
 
@@ -247,11 +229,22 @@ public class lectura_arco {
                 Conexion.executeQueryClose();
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
-            } 
+            }
+            
+     
+            
 
+            
             mav.addObject("arcos", arcos);
-            mav.addObject("bddRemotas", bddRemotas);
-            mav.addObject("counterErrorDB", counterErrorDB);
+            mav.addObject("bddRemotas",  Queries.dbbDashboard().getBdd());
+            mav.addObject("counterErrorDB", Queries.dbbDashboard().getCounterBDD());
+            
+            mav.addObject("lecturas", Queries.arcosDashboard().getArcos());
+            mav.addObject("counterLecturas", Queries.arcosDashboard().getCounterArcos());
+            
+            mav.addObject("alertasPendientes", Queries.alertasDashboard().getAlerta());
+            mav.addObject("counterAlertasPendientes", Queries.alertasDashboard().getCounterAlarmas());
+            
             mav.addObject("arcos_option", arcos_option);
             mav.addObject("colors", colors);
             mav.addObject("alertas_prom", alertas_prom);

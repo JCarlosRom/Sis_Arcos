@@ -15,6 +15,7 @@
         <title>Lecturas Vehículo</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.min.css" />
+        <link rel="stylesheet" href="css/lecturaVehiculo.css" />
     </head>
 
     <body class="theme-dark">
@@ -23,8 +24,7 @@
         <main>
             <!-- Menu lateral de Consulta de lecturas por Vehículos -->
             <jsp:include page="/WEB-INF/jsp/Layouts/lateralMenuVeh.jsp"></jsp:include>
-            <!-- main slide nav -->
-           <jsp:include page="/WEB-INF/jsp/Layouts/Menu.jsp"></jsp:include>
+  
             <!-- map-container -->
             <div class="map-container" id="map" style="z-index: 1">
             </div>
@@ -164,16 +164,16 @@
 
 
             <c:forEach var="arco" items="${arcos}">
-                addMarker(${arco.getId()}, "${arco.getNombre()}", "${arco.getDescripcion()}", ${arco.getLatitud()}, ${arco.getLongitud()}, ${arco.getTipo_alerta()});
+                addMarker(${arco.getId()}, "${arco.getNombre()}", ${arco.getLatitud()}, ${arco.getLongitud()}, ${arco.getTipo_alerta()});
             </c:forEach>
 
             }
 
-            function addMarker(id, nombre, descripcion, lat, lng, alerta) {
+            function addMarker(id, nombre, lat, lng, alerta) {
                 let marcador = new google.maps.Marker({position: {lat: lat, lng: lng}, map: map, icon: iconMarker(alerta)});
 
                 let infowindow = new google.maps.InfoWindow({
-                    content: "<b>" + nombre + "</b><br>" + descripcion + "."
+                    content: "<b>" + nombre + "</b>"
                 });
 
                 marcador.addListener('click', function () {

@@ -16,7 +16,7 @@ public class Arco {
     public void setMarcador(int marcador) {
         this.marcador = marcador;
     }
-    private String nombre, descripcion;
+    private String nombre;
     private double latitud, longitud;
 
     public Arco(int id, String nombre) {
@@ -24,10 +24,9 @@ public class Arco {
         this.nombre = nombre;
     }
 
-    public Arco(int id, String nombre, String descripcion, double latitud, double longitud, int tipo_alerta) {
+    public Arco(int id, String nombre, double latitud, double longitud, int tipo_alerta) {
         this.id = id;
         this.nombre = nombre;
-        this.descripcion = descripcion;
         this.latitud = latitud;
         this.longitud = longitud;
         this.tipo_alerta = tipo_alerta;
@@ -57,13 +56,7 @@ public class Arco {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+ 
 
     public double getLatitud() {
         return latitud;

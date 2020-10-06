@@ -8,7 +8,7 @@
    // Metodo para checar los cambios cada 3 segundos
 $(document).ready(function () {
     console.log("ntro aqui");
-    setInterval(varificar_cambios, 3000);
+    //setInterval(varificar_cambios, 3000);
 });
 
 //Metodo para verificar si existen cambios en la tabla bandera
@@ -20,10 +20,7 @@ function varificar_cambios() {
         contentType: "application/json; charset=UTF-8;",
         dataType: "json",
         success: function (data) {
-
-            console.log("Entro varificar_cambios()");
-            console.log(data);
-
+            
             if (data.Alertas_Auto == 1) {
                 console.log("Entro ak cambio de alerrtas");
                 cambio_consultaVehiculos();
@@ -355,10 +352,10 @@ $('#Aceptar').submit(function (evento) {
 
 });
 
-function addMarker(id, nombre, descripcion, lat, lng, alerta) {
+function addMarker(id, nombre, lat, lng, alerta) {
     let marcador = new google.maps.Marker({position: {lat: lat, lng: lng}, map: map, icon: iconMarker(alerta)});
     let infowindow = new google.maps.InfoWindow({
-        content: "<b>" + nombre + "</b><br>" + descripcion + "."
+        content: "<b>" + nombre + "</b>"
     });
     marcador.addListener('click', function () {
         infowindow.open(map, marcador);
@@ -395,3 +392,9 @@ function changedButton(id, alerta) {
     let arco = markers["" + id + ""];
     arco.setIcon(iconMarker(alerta));
 }
+
+$("#tiempoRealButton").on("click", function(){
+    $("#OptionsColumn").css("display","none");
+    $("#tiempoRealDashboard").css("display","block");
+    
+})
