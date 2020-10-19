@@ -9112,6 +9112,19 @@ body.theme-dark {
   border: 1px solid #122F3E;
 }
 
+.card {
+  background-color: #0A1E28;
+  border: 1px solid #122F3E;
+}
+
+.step{
+    color:white;
+}
+
+h6{
+    color:white;
+}
+
 .theme-dark .slide-menu .card .card-header,
 .theme-dark .slide-menu .card .card-body,
 .theme-dark .slide-menu .card .card-footer {

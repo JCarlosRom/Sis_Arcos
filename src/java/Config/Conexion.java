@@ -22,7 +22,7 @@ public class Conexion {
     
     public DriverManagerDataSource dataSource;
     //
-    public static String servidorBD = "yimicol2020.ddns.net";
+    public static String servidorBD = "192.168.1.74";
     public static String puertoBD = "5432";
     public static String nombreBD = "BD_Central_Arcos_V2";
     public static String usuarioBD = "postgres";

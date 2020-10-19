@@ -9,7 +9,7 @@ import Model.Arco;
 import Model.Lectura;
 import Model.alertasPendientes;
 import Model.bdd_remotas;
-import Model.Queries;
+import Model.Queries_index;
 import Model.colores;
 import Model.lectura_arco_detalle;
 import java.io.IOException;
@@ -236,14 +236,14 @@ public class lectura_arco {
 
             
             mav.addObject("arcos", arcos);
-            mav.addObject("bddRemotas",  Queries.dbbDashboard().getBdd());
-            mav.addObject("counterErrorDB", Queries.dbbDashboard().getCounterBDD());
+            mav.addObject("bddRemotas",  Queries_index.dbbDashboard().getBdd());
+            mav.addObject("counterErrorDB", Queries_index.dbbDashboard().getCounterBDD());
             
-            mav.addObject("lecturas", Queries.arcosDashboard().getArcos());
-            mav.addObject("counterLecturas", Queries.arcosDashboard().getCounterArcos());
+            mav.addObject("lecturas", Queries_index.arcosDashboard().getArcos());
+            mav.addObject("counterLecturas", Queries_index.arcosDashboard().getCounterArcos());
             
-            mav.addObject("alertasPendientes", Queries.alertasDashboard().getAlerta());
-            mav.addObject("counterAlertasPendientes", Queries.alertasDashboard().getCounterAlarmas());
+            mav.addObject("alertasPendientes", Queries_index.alertasDashboard().getAlerta());
+            mav.addObject("counterAlertasPendientes", Queries_index.alertasDashboard().getCounterAlarmas());
             
             mav.addObject("arcos_option", arcos_option);
             mav.addObject("colors", colors);

@@ -27,7 +27,7 @@
             <div class="card-header">
                 <div class="container-fluid">
                     <div class="row no-gutters">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="tab-1" data-toggle="tab" href="#tab_1" role="tab"
@@ -55,21 +55,38 @@
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane fade show active" style="overflow:auto; height: 350px;" id="tab_1" role="tabpanel" aria-labelledby="tab-1">
-                        <p>Listas</p>
+                        <div class="row" style="margin:0px;" id="OptionsColumn">
+                            <div class="col-md-3">
+                                <a href="listaNegra.htm">
+                                    <button class="btnOptionsMenu" id="tiempoRealButton">Lista blanca</button>
+                                </a>
+                                
+                            </div>
+                            <div class="col-md-3">
+                                <form action="lecturas_vehiculo.htm">
+                                    <button class="btnOptionsMenu"  >Lista negra</button>
+                                </form>
+                            </div>
+                          
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="tab_2" style="overflow:scroll;height: 350px;" role="tabpanel" aria-labelledby="tab-2" >
                         <p>Lecturas</p>
                     </div>
                     <div class="tab-pane fade" id="tab_3" style="overflow:scroll;height: 350px;" role="tabpanel" aria-labelledby="tab-3" >
                         <div class="row" style="margin:0px;" id="OptionsColumn">
-                            <div class="col-md-3">
-                                <a class="btnOptionsMenu" id="tiempoRealButton">En tiempo real</a>
+                            <div class="col-md-4">
+                                <button class="btnOptionsMenu" id="tiempoRealButton">En tiempo real</button>
                             </div>
-                            <div class="col-md-3">
-                                <a class="btnOptionsMenu"  href="lecturas_vehiculo.htm">Por vehículo</a>
+                            <div class="col-md-4">
+                                <form action="lecturas_vehiculo.htm">
+                                    <button class="btnOptionsMenu"  >Por vehículo</button>
+                                </form>
                             </div>
-                            <div class="col-md-3">
-                                <a class="btnOptionsMenu" href= "lecturas_arco.htm" >Por Arco</a>
+                            <div class="col-md-4">
+                                <form action="lecturas_arco.htm">
+                                    <button class="btnOptionsMenu"  >Por Arco</button>
+                                </form>
                             </div>
                         </div>
                         

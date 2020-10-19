@@ -6,10 +6,10 @@
     }
 %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8" lang="es"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Tablero principal</title>
@@ -31,6 +31,42 @@
             <div class="map-container" id="map" style="z-index: 1">
                 
             </div>
+          <!-- Modal -->
+            <div class="modal fade show" id="modalAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+           <div class="modal fade show" id="modalPlataformaMexico" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document" style="max-width: 1300px;">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <iframe src="https://www.repuve-consultar.com/consulta-ciudadana" width="100%" height="800" allowfullscreen="allowfullscreen"></iframe>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
         </main>
         <!-- Footer -->
         <jsp:include page="/WEB-INF/jsp/Layouts/Footer.jsp"></jsp:include>
@@ -50,6 +86,7 @@
                 <a href="arcos/" class="menu-item"><i class="fas fa-archway"></i></a>
             </menu>
         </div>
+        
         <!-- end circular-menu -->
 
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

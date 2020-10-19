@@ -1,10 +1,11 @@
-S<%-- 
+<%-- 
     Document   : Header
     Created on : 22-sep-2020, 13:08:31
     Author     : ADMIN
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<meta charset="UTF-8">
 <link rel="stylesheet" href="css/header.css" />
  <nav class="main-navbar navbar navbar-expand-lg">
     <a class="navbar-brand" href="index.htm">
@@ -72,7 +73,8 @@ S<%--
                  <div class="dropdown">
                     <div class="ds-success btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 4px;">
                         <div class="display-status">
-                            <i class="ds-icon ds-success" style="font-size:25px; color: rgb(26,117,207);"></i>
+                            <%--<img src="images/ico-arcos-white.png" alt="" > --%>
+                            <i class="ds-icon ${(counterErrorDB > 0) ? 'ds-danger': 'ds-success'}" style="font-size:25px; color: rgb(26,117,207);"></i>
                             <p style="color:white; font-weight:bold;margin-top: 27px; position:absolute; font-size:12px;margin-left: 2px;">${counterErrorDB}</p>
                         </div>
                     </div>
@@ -100,13 +102,15 @@ S<%--
                     </div>
                 </div>
             </div>
+            <%-- Arcos --%>
             <div class="col-md-3">
                 <div class="dropdown">
                     <div class="ds-success btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 4px;">
                         <div class="display-status">
-                            <i class="fas fa-layer-group ds-success iconDrowpdownLect"></i>
-                            <i class="far fa-circle iconDrowpdownLectStatus" aria-hidden="true" ></i>
-                            <p class="lectNo" >${counterLecturas}</p>
+                            <i class="far fa-circle ${(counterLecturas > 0) ? 'lecturaErrorArcos': 'lecturaSuccessArcos'}" style="font-size: 11px;  position: absolute;"></i>
+                            <img src="images/ico-arcos-white.png" alt="" class="iconDrowpdownLect" style="filter: invert(37%) sepia(14%) saturate(5317%) hue-rotate(184deg) brightness(73%) contrast(97%);"> 
+                            <i class="iconDrowpdownLectStatus" aria-hidden="true" ></i>
+                            <p style="color: white; font-weight:bold;margin-top: 27px; position:absolute; font-size:12px;margin-left: 2px;" >${counterLecturas}</p>
                         </div>
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: black; width: 110%;">
@@ -114,7 +118,7 @@ S<%--
                             <c:if test = "${Lectura.getStatus()==1}">
                                 <div class="dropdown-item">
                                     <div class="display-status">
-                                        <img src="images/ico-arcos-white.png" alt="" >
+                                        
                                         <i class="far fa-circle lecturaError" aria-hidden="true" ></i>
                                         <i class="ds-success"> </i>
                                         <span class="ds-msg" style="width:35px;"> ${Lectura.getClave()}</span>
@@ -125,7 +129,7 @@ S<%--
                             <c:if test = "${Lectura.getStatus()==2}">
                                 <div class="dropdown-item">
                                     <div class="display-status">
-                                        <img src="images/ico-arcos-white.png" alt="" >
+                                        
                                         <i class="far fa-circle lecturaWarning" aria-hidden="true" ></i>
                                         <i class="ds-success"> </i>
                                         <span class="ds-msg" style="width:35px;"> ${Lectura.getClave()}</span>
@@ -136,7 +140,7 @@ S<%--
                             <c:if test = "${Lectura.getStatus()==3}">
                                 <div class="dropdown-item">
                                     <div class="display-status">
-                                        <img src="images/ico-arcos-white.png" alt="" >
+                                        
                                         <i class="far fa-circle lecturaSuccess" aria-hidden="true"  ></i>
                                         <i class="ds-success"> </i>
                                         <span class="ds-msg" style="width:35px;"> ${Lectura.getClave()}</span>
@@ -149,6 +153,7 @@ S<%--
                     </div>
                 </div>
             </div>
+            <%-- Alertas --%>
             <div class="col-md-3">
                 <div class="dropdown">
                     <div class="ds-success btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 4px;">
@@ -163,8 +168,7 @@ S<%--
                    
                                 <div class="dropdown-item">
                                     <div class="display-status">
-                                        <i class="ds-success"> </i>
-                                        <span class="ds-msg"> ${alertasPendientes.getClave()} </span>
+                                        <span class="ds-msg" style="width:25px;"> ${alertasPendientes.getClave()} </span>
                                         <span class="ds-msg" style="width:35px;"> ${alertasPendientes.getNombre()}</span>
                                     </div>
                                 </div>

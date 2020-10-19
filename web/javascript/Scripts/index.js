@@ -7,7 +7,7 @@
 
    // Metodo para checar los cambios cada 3 segundos
 $(document).ready(function () {
-    console.log("ntro aqui");
+
     //setInterval(varificar_cambios, 3000);
 });
 

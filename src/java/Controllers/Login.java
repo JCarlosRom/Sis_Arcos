@@ -37,9 +37,14 @@ public class Login {
         String usuario = request.getParameter("inputUsuario");
         String password = request.getParameter("inputPassword");
         
-        if (validarUsuario(usuario, password)) {
+        int id = (validarUsuario(usuario, password));
+        
+        System.out.println(id);
+        
+        if (id != 0) {
             HttpSession session = request.getSession(true);
             session.setAttribute("usuario", usuario);
+            session.setAttribute("id", id);
             mav.setViewName("index");
             response.sendRedirect("index.htm");
             //session.setAttribute("advertenciasPromedio", getAdvertencias());
@@ -51,15 +56,14 @@ public class Login {
     }
 
     // Metodo privado para la validacion del usuario
-    private boolean validarUsuario(String usuario, String password) throws FileNotFoundException, FileNotFoundException {
-        boolean isValid = false;
+    private int validarUsuario(String usuario, String password) throws FileNotFoundException, FileNotFoundException {
+        int isValid = 0;
         Conexion conexion = new Conexion();
         try (ResultSet r = conexion.query("select * from sp_validar_usuario('" + usuario + "','" + password + "');")) {
             if (r.next()) {
-                String codigo = r.getString(1);
-                if (codigo.equals("1")) {
-                    isValid = true;
-                }
+                int codigo = r.getInt("codigo");
+                isValid = codigo; 
+               
             }
             conexion.executeQueryClose();
         } catch (Exception e) {

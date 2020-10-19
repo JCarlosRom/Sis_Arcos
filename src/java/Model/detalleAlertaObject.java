@@ -11,12 +11,13 @@ package Model;
  */
 public class detalleAlertaObject {
     private int idAlerta, idEtapa, idEstatus;
-    private String alertaNombre, alertaLugar, alertaFecha, alertaHora, Placa, Niv, Tipo, Marca, Color, Etapa, Estatus, Comentario;
+    private String alertaNombre, alertaLugar, alertaFecha, alertaHora, Placa, Niv, Tipo, Marca, Color, Etapa, Estatus, Comentario, Arco, direccionArco;
     private double latitud, longitud;
     
     public detalleAlertaObject(int idAlerta, String Etapa, int idEtapa, String Status, int idEstatus, String alertaNombre, 
-            String alertaLugar, String alertaFecha, String alertaHora, String Tipo, String Marca, String Color,  
-            String Placa, String Niv, double latitud, double longitud, String Comentario) {
+            String Arco, String direccionArco,String alertaLugar, String alertaFecha, String alertaHora, String Tipo, String Marca, String Color,  
+            String Placa, String Niv, double latitud, double longitud, String Comentario)
+    {
         this.idAlerta = idAlerta;
         this.Etapa = Etapa;
         this.idEtapa = idEtapa;
@@ -24,6 +25,8 @@ public class detalleAlertaObject {
         this.idEstatus = idEstatus; 
         this.alertaNombre = alertaNombre;
         this.alertaLugar = alertaLugar;
+        this.Arco = Arco;
+        this.direccionArco = direccionArco;
         this.alertaFecha = alertaFecha;
         this.alertaHora = alertaHora;
         this.Tipo = Tipo;
@@ -35,6 +38,8 @@ public class detalleAlertaObject {
         this.longitud = longitud;
         this.Comentario = Comentario;
     }
+
+      
     // Id Alerta
     public int getIdAlerta() {
       return idAlerta;
@@ -98,6 +103,25 @@ public class detalleAlertaObject {
     public void setAlertaLugar(String alertaLugar){
         this.alertaLugar = alertaLugar; 
     };
+    
+    // Arco de la alerta
+    public String getArco(){
+        return Arco;
+    };
+    
+    public void setArco(String Arco){
+        this.Arco= Arco; 
+    };
+    
+    // Dirección de la alerta
+    public String getDireccion(){
+        return direccionArco;
+    };
+    
+    public void setDireccion(String direccionArco){
+        this.direccionArco= direccionArco; 
+    };
+    
     // Fecha de alerta
     public String getAlertaFecha (){
         return alertaFecha;

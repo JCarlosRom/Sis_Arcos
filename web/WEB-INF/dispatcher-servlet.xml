@@ -20,6 +20,7 @@
                 <prop key="login.htm">loginController</prop>
                 <prop key="login_ajax.htm">loginController</prop>
                 <prop key="login_1.htm">loginController</prop>
+                <prop key="logout.htm">loginController</prop>
                                 
                 
                 <prop key="index.htm">Controller_index</prop>
@@ -33,16 +34,39 @@
                 <prop key="uploadDocs.htm">Controller_detalleAlerta</prop>
                 <prop key="getDocsAlerta.htm">Controller_detalleAlerta</prop>
                 <prop key="eliminarDoc.htm">Controller_detalleAlerta</prop>
+                <prop key="guardarSeguimiento.htm">Controller_detalleAlerta</prop>
+                <prop key="getEstatus.htm">Controller_detalleAlerta</prop>
+                <prop key="uploadDocSeguimiento.htm">Controller_detalleAlerta</prop>
+                <prop key="getDocsAlertaSeguimiento.htm">Controller_detalleAlerta</prop>
+                <prop key="fullDetalleAlerta.htm">Controller_detalleAlerta</prop>
                 
+                
+                <prop key="listaNegra.htm">lista_negraController</prop>
+                <prop key="insertarLista.htm">lista_negraController</prop>
+                <prop key="getListaNegra.htm">lista_negraController</prop>
+                <prop key="getRegitroById.htm">lista_negraController</prop>
+                <prop key="searchRange.htm">lista_negraController</prop>
+                <prop key="actualizar_edo.htm">lista_negraController</prop>
+                <prop key="listaNegra_detalle.htm">lista_negraController</prop>
+                
+                               
+                <prop key="listaBlanca.htm">lista_blancaController</prop>
+                <prop key="insertarListaBlanca.htm">lista_blancaController</prop>
+                <prop key="getListaBlanca.htm">lista_blancaController</prop>
+                <prop key="getRegitroByIdBlanca.htm">lista_blancaController</prop>
+                <prop key="searchRangeBlanca.htm">lista_blancaController</prop>
+                <prop key="actualizar_edoBlanca.htm">lista_blancaController</prop>
+                <prop key="listaBlanca_detalle.htm">lista_blancaController</prop>
                 
                 
                 <prop key="lecturas_vehiculo.htm">lectura_vehiculoController</prop>
                 <prop key="lecturas_vehiculo_detalle.htm">lectura_vehiculo_detalleController</prop>
                 <prop key="consultar_vehiculo.htm">lectura_vehiculoController</prop>
+                
                 <prop key="lecturas_arco.htm">lectura_arcoController</prop>
                 <prop key="lecturas_arco_detalle.htm">lectura_arco_detalleController</prop>
                 <prop key="consultar_alertas_arcos.htm">lectura_arcoController</prop>
-                <prop key="logout.htm">loginController</prop>
+              
                 
                 <prop key="getAlertas.htm">Controller_index</prop>
                 

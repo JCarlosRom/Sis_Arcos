@@ -10,26 +10,27 @@ package Model;
  * @author ADMIN
  */
 public class Etapa {
-    int id_etapa;
-    String nombre_etapa; 
-    public Etapa ( int id_etapa, String nombre_etapa){
-        this.id_etapa = id_etapa; 
-        this.nombre_etapa = nombre_etapa; 
+    int idEtapa;
+    String EstatusEtapa; 
+    
+    public Etapa ( int idEtapa, String EstatusEtapa){
+        this.idEtapa = idEtapa; 
+        this.EstatusEtapa = EstatusEtapa; 
     }
     
-    public void setIdEtapa (int id_etapa){
-        this.id_etapa = id_etapa; 
+    public void setIdEtapa (int idEtapa){
+        this.idEtapa = idEtapa; 
     }
     
     public int getIdEtapa (){
-        return id_etapa;
+        return idEtapa;
     }
     
-    public void setNombreEtapa ( String nombre_etapa){
-        this.nombre_etapa = nombre_etapa; 
+    public void setNombreEtapa ( String EstatusEtapa){
+        this.EstatusEtapa = EstatusEtapa; 
     }
     
     public String getNombreEtapa (){
-        return nombre_etapa;
+        return EstatusEtapa;
     }
 }

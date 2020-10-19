@@ -11,7 +11,7 @@ import Model.Arcos_Operando;
 import Model.bdd_remotas;
 import Model.lectura_vehiculo;
 import Model.alertasPendientes;
-import Model.Queries;
+import Model.Queries_index;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -109,14 +109,14 @@ public class index extends HttpServlet {
 
             mav.addObject("arcos", arcos);
             
-            mav.addObject("bddRemotas",  Queries.dbbDashboard().getBdd());
-            mav.addObject("counterErrorDB", Queries.dbbDashboard().getCounterBDD());
+            mav.addObject("bddRemotas",  Queries_index.dbbDashboard().getBdd());
+            mav.addObject("counterErrorDB", Queries_index.dbbDashboard().getCounterBDD());
             
-            mav.addObject("lecturas", Queries.arcosDashboard().getArcos());
-            mav.addObject("counterLecturas", Queries.arcosDashboard().getCounterArcos());
+            mav.addObject("lecturas", Queries_index.arcosDashboard().getArcos());
+            mav.addObject("counterLecturas", Queries_index.arcosDashboard().getCounterArcos());
             
-            mav.addObject("alertasPendientes", Queries.alertasDashboard().getAlerta());
-            mav.addObject("counterAlertasPendientes", Queries.alertasDashboard().getCounterAlarmas());
+            mav.addObject("alertasPendientes", Queries_index.alertasDashboard().getAlerta());
+            mav.addObject("counterAlertasPendientes", Queries_index.alertasDashboard().getCounterAlarmas());
             
             mav.addObject("arcosOp", arcosOp);
             mav.addObject("alertas_prom", alertas_prom);
@@ -156,13 +156,8 @@ public class index extends HttpServlet {
         System.out.println("Hello");
         mav.addObject("counterErrorDB", counterErrorDB);
         mav.addObject("bddRemotas", bddRemotas);
-
-        
-        //mav.setViewName("lecturas_vehiculo");
         
         return mav;
-        
-
     }
     
     // Metodo para cerrar sesion
@@ -360,11 +355,11 @@ Conexion Conexion = new Conexion();
         Conexion Conexion = new Conexion();
         try {
             
-              ResultSet r2 = Conexion.query("select a.id_alerta, cat.nombre as nombre, l.ubicacion, "
-                + "concat(extract(day from a.fecha_hora),'/',extract(month from a.fecha_hora),'/',extract(year from a.fecha_hora)) as \"alertaFecha\", \n" +
+              ResultSet r2 = Conexion.query("select a.id_alerta, cat.nombre as nombre, l.ubicacion, \n" +
+                "concat(extract(day from a.fecha_hora),'/',extract(month from a.fecha_hora),'/',extract(year from a.fecha_hora)) as \"alertaFecha\", \n" +
                 "concat(extract(hour from a.fecha_hora),':',extract(minute from a.fecha_hora)) as \"Hora\",\n" +
-                "urp.niv, urp.placa from  alerta a inner join cat_alerta cat on a.fk_id_cat_alerta = cat.id_cat_alerta \n" +
-                "inner join lector l on a.fk_id_lector = l.id_lector inner join unidad_registro_repuve urp on a.fk_id_objeto = urp.niv\n" +
+                "ul.fk_niv as \"Niv\", ul.placa as \"Placa\" from  alerta a left join cat_alerta cat on a.fk_id_cat_alerta = cat.id_cat_alerta \n" +
+                "left join lector l on a.fk_id_lector = l.id_lector left join union_lecturas ul on a.fk_id_union_lectura = ul.id_union_lectura\n" +
                 "where a.pendiente = 0;");
          
             while (r2.next()) {
@@ -375,8 +370,8 @@ Conexion Conexion = new Conexion();
                 alertas2.put("alertaLugar", r2.getString("ubicacion"));
                 alertas2.put("alertaFecha", r2.getString("alertaFecha"));
                 alertas2.put("alertaHora", r2.getString("Hora"));
-                alertas2.put("Placa", r2.getString("niv"));
-                alertas2.put("Niv", r2.getString("placa"));
+                alertas2.put("Placa", r2.getString("placa"));
+                alertas2.put("Niv", r2.getString("niv"));
                 
                 alertas.put(r2.getInt("id_alerta"),alertas2);
                
@@ -397,7 +392,7 @@ Conexion Conexion = new Conexion();
         PrintWriter out = response.getWriter();
 
         JSONObject bdd = new JSONObject();
-Conexion Conexion = new Conexion();
+        Conexion Conexion = new Conexion();
         try {
             
             ResultSet r = Conexion.query("select * from sp_acceso_datos_db()");
